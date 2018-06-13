@@ -1,0 +1,136 @@
+header {
+  margin-bottom: 5px;
+  text-align: center;
+}
+
+hr {
+  border-color: black;
+  margin: 1px 0;
+}
+
+table {
+  border: 2px solid black;
+  font-size: 12px;
+  width: 100%;
+}
+
+th {
+  background: black;
+  color: white;
+  font-weight: normal;
+  padding: 7px 5px;
+  text-align: center;
+}
+
+td {
+  border: 1px solid black;
+  padding: 7px 5px;
+  text-align: center;
+}
+
+td.header {
+  background: #999;
+  border-left: 0;
+  border-right: 0;
+  color: white;
+  padding: 5px 0 5px 20px;
+  text-align: left;
+}
+
+td.note {
+  text-align: left;
+}
+
+td p {
+  margin-bottom: 0;
+}
+
+span.source {
+  background: #999;
+  color: white;
+  border: 1px solid black;
+  display: block;
+  text-align: center;
+}
+
+/* Pretty paper look */
+
+body {
+  background: rgb(204, 204, 204);
+}
+
+.page {
+  background: white;
+  box-shadow: 0 0 0.2in rgba(0, 0, 0, 0.5);
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 0.2in;
+  padding: 0.3in;
+  width: 8.5in;
+}
+
+.typeSelector p,
+.planSelector p,
+.templateSelector p {
+  font-size: 1.25em;
+  margin: -20px 0 0;
+}
+
+.typeSelector a,
+.planSelector a,
+.templateSelector a {
+  background: #eee;
+  border: 1px solid #333;
+  box-sizing: border-box;
+  color: #333;
+  display: inline-block;
+  font-size: 1.7em;
+  margin-top: 10px;
+  padding: 10px 0;
+  text-align: center;
+  width: 49%;
+}
+
+.templateSelector a {
+  font-size: 1.25em;
+  padding: 5px 0;
+  margin-left: 10px;
+}
+
+.typeSelector a:hover,
+.planSelector a:hover,
+.templateSelector a:hover,
+.templateSelector a.active {
+  background: #999;
+  color: #fff;
+  text-decoration: none;
+}
+
+.typeSelector a:nth-child(odd),
+.planSelector a:nth-child(odd) {
+  margin-left: 2%
+}
+
+.templateSelector a:first-child {
+  margin-left: 5px;
+}
+
+@media print {
+  .typeSelector,
+  .planSelector,
+  .templateSelector {
+    display: none;
+  }
+  body,
+  .page {
+    background: white;
+    box-shadow: 0;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+  }
+  html {
+    margin: 0.25in;
+  }
+}
