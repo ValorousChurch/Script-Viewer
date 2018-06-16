@@ -79,7 +79,6 @@ export const PCO = {
     return items
       .reverse()
       .map(item => {
-        console.log(item);
         if (item.type === 'header') elapsedTime = 0;
         elapsedTime += item.length;
         item.clock = elapsedTime;
