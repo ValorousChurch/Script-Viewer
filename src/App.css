@@ -1,3 +1,5 @@
+/* Plan */
+
 header {
   margin-bottom: 5px;
   text-align: center;
@@ -45,29 +47,22 @@ td p {
   margin-bottom: 0;
 }
 
+/* Item Notes */
+
+td.note:last-child {
+  font-weight: bold;
+}
+
 span.source {
   background: #999;
   color: white;
   border: 1px solid black;
   display: block;
+  font-weight: normal;
   text-align: center;
 }
 
-/* Pretty paper look */
-
-body {
-  background: rgb(204, 204, 204);
-}
-
-.page {
-  background: white;
-  box-shadow: 0 0 0.2in rgba(0, 0, 0, 0.5);
-  display: block;
-  margin: 0 auto;
-  margin-bottom: 0.2in;
-  padding: 0.3in;
-  width: 8.5in;
-}
+/* Additional Components */
 
 .typeSelector p,
 .planSelector p,
@@ -113,6 +108,22 @@ body {
 
 .templateSelector a:first-child {
   margin-left: 5px;
+}
+
+/* Pretty paper look */
+
+body {
+  background: rgb(204, 204, 204);
+}
+
+.page {
+  background: white;
+  box-shadow: 0 0 0.2in rgba(0, 0, 0, 0.5);
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 0.2in;
+  padding: 0.3in;
+  width: 8.5in;
 }
 
 @media print {
