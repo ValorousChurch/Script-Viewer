@@ -10,9 +10,9 @@ import registerServiceWorker from './registerServiceWorker';
 ReactDOM.render(
   <Router>
     <Switch>
-      <Route path="/plan/:serviceType/:planId/:type?" component={Plan} />
-      <Route path="/list/:serviceType" component={PlanSelector} />
-      <Route path="/" component={TypeSelector} />
+      <Route path="/Script-Viewer/plan/:serviceType/:planId/:type?" component={Plan} />
+      <Route path="/Script-Viewer/list/:serviceType" component={PlanSelector} />
+      <Route path="/Script-Viewer/" component={TypeSelector} />
     </Switch>
   </Router>,
   document.getElementById('root')

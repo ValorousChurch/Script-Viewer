@@ -18,7 +18,7 @@ class PlanSelector extends Component {
       <Link
         key={plan.id}
         value={plan.id}
-        to={`/plan/${this.props.match.params.serviceType}/${plan.id}`}
+        to={`/Script-Viewer/plan/${this.props.match.params.serviceType}/${plan.id}`}
       >
         {plan.attributes.dates}
       </Link>

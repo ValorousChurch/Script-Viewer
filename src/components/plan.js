@@ -118,9 +118,9 @@ class Plan extends Component {
         style={{
           width: `calc(${100 / Object.keys(planTemplates).length}% - 10px)`,
         }}
-        to={`/plan/${this.props.match.params.serviceType}/${this.props.match.params.planId}${
-          template === 'default' ? '' : `/${template}`
-        }`}
+        to={`/Script-Viewer/plan/${this.props.match.params.serviceType}/${
+          this.props.match.params.planId
+        }${template === 'default' ? '' : `/${template}`}`}
       >
         {template[0].toUpperCase() + template.substr(1)}
       </NavLink>
