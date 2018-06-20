@@ -38,7 +38,9 @@ export const PCO = {
   },
 
   getPlanItems: async plan => {
-    const url = `${PCO.baseUrl}/service_types/${plan.serviceType}/plans/${plan.planId}/items`;
+    const url = `${PCO.baseUrl}/service_types/${plan.serviceType}/plans/${
+      plan.planId
+    }/items?per_page=100`;
 
     const itemsData = await myFetch(url);
 
