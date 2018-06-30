@@ -83,7 +83,7 @@ export const PCO = {
       .map(item => {
         if (item.type === 'header') elapsedTime = 0;
         elapsedTime += item.length;
-        item.clock = elapsedTime;
+        item.clock = item.length > 0 ? elapsedTime : '';
         return item;
       })
       .reverse();

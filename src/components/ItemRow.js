@@ -17,13 +17,12 @@ class ItemRow extends Component {
   }
 
   render() {
-    const length = secToTime(this.props.item.length);
     let description = this.state.notes.Vocals || '';
     if (this.props.item.details !== null) description += `<hr /> ${this.props.item.details}`;
     return (
       <tr>
-        <td>{secToTime(this.props.item.clock)}</td>
-        <td>{length}</td>
+        <td>{this.props.item.clock > 0 ? secToTime(this.props.item.clock) : ''}</td>
+        <td>{this.props.item.length > 0 ? secToTime(this.props.item.length) : '--:--'}</td>
         <td style={{ textAlign: 'left' }}>
           <b>{this.props.item.title}</b>
           <br />
