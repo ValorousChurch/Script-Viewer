@@ -128,9 +128,11 @@ class Plan extends Component {
 
     return (
       <React.Fragment>
-        <div className="page templateSelector">
-          <p>Select the plan template you would like to view.</p>
-          {templateLinks}
+        <div className="page">
+          <div className="templateSelector">
+            <p>Select the plan template you would like to view.</p>
+            {templateLinks}
+          </div>
         </div>
         <div className="page">
           <header>
