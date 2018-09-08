@@ -100,7 +100,7 @@ span.source {
 
 .typeSelector a:nth-child(odd),
 .planSelector a:nth-child(odd) {
-  margin-left: 2%
+  margin-left: 2%;
 }
 
 .templateSelector a:first-child {
@@ -121,6 +121,12 @@ body {
   padding: 0.25in;
   padding-top: 0.15in;
   width: 8.5in;
+}
+
+.typeSelector,
+.planSelector,
+.templateSelector {
+  padding-top: 0.2in;
 }
 
 @media print {
