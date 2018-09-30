@@ -20,6 +20,16 @@ export const PCO = {
 
   getFuturePlans: (serviceType, limit = 5) => PCO.getPlans(serviceType, limit, 'filter=future'),
 
+  getVersion: async (serviceType, planId) => {
+    const url = `${PCO.baseUrl}/service_types/${serviceType}/plans/${planId}/notes`;
+
+    const planNotesData = await myFetch(url);
+    const versionNote = planNotesData.filter(
+      note => note.attributes.category_name === 'Information'
+    );
+    return versionNote[0].attributes.content || 'NONE';
+  },
+
   getPlan: async (serviceType, planId) => {
     const plan = { serviceType, planId };
     const url = `${PCO.baseUrl}/service_types/${plan.serviceType}/plans/${plan.planId}`;
@@ -28,11 +38,7 @@ export const PCO = {
     plan.planTitle = planData.attributes.title;
     plan.planDates = planData.attributes.dates;
 
-    const planNotesData = await myFetch(`${url}/notes`);
-    const versionNote = planNotesData.filter(
-      note => note.attributes.category_name === 'Information'
-    );
-    plan.planVersion = versionNote[0].attributes.content || 'NONE';
+    plan.planVersion = await PCO.getVersion(plan.serviceType, plan.planId);
 
     return plan;
   },
