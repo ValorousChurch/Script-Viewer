@@ -7,6 +7,7 @@ const PlanSelector = () => (
       <p>To begin, please select a service type.</p>
       <Link to="/Script-Viewer/list/41396">Morning Experience</Link>
       <Link to="/Script-Viewer/list/804451">Evening Experience</Link>
+      <Link to="/Script-Viewer/list/180063">Special Event</Link>
     </div>
   </div>
 );
