@@ -1,7 +1,7 @@
 import { auth } from './api-auth';
 
 const myFetch = async url => {
-  const { data } = await fetch(url, {
+  const { data } = await fetch('https://cors-proxy.valorouschurch.workers.dev/proxy/?apiurl=' + encodeURIComponent(url), {
     method: 'GET',
     headers: {
       Authorization: `Basic ${btoa(`${auth.appID}:${auth.secret}`)}`,
