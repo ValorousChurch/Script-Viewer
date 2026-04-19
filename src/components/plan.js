@@ -78,6 +78,7 @@ class Plan extends Component {
 
     this.setState({
       planTemplate: planTemplates[this.props.match.params.type] || planTemplates.default,
+      planTemplateName: this.props.match.params.type,
       ...plan,
       planItems,
     });
@@ -86,6 +87,7 @@ class Plan extends Component {
   componentWillReceiveProps = newProps => {
     this.setState({
       planTemplate: planTemplates[newProps.match.params.type] || planTemplates.default,
+      planTemplateName: newProps.match.params.type,
     });
   };
 
@@ -107,7 +109,7 @@ class Plan extends Component {
         planTemplate: this.state.planTemplate,
         serviceType: this.state.serviceType,
       };
-      return <ItemRow item={item} key={item.id} plan={plan} />;
+      return <ItemRow item={item} key={item.id} plan={plan} templateName={this.state.planTemplateName} />;
     });
 
     const templateLinks = Object.keys(planTemplates).map(template => (

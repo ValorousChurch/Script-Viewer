@@ -44,14 +44,13 @@ export const PCO = {
   },
 
   getPlanItems: async plan => {
-    const url = `${PCO.baseUrl}/service_types/${plan.serviceType}/plans/${
-      plan.planId
-    }/items?per_page=100`;
+    const url = `${PCO.baseUrl}/service_types/${plan.serviceType}/plans/${plan.planId}/items?per_page=100`;
 
     const itemsData = await myFetch(url);
 
     const items = itemsData.map(itemData => {
       const item = {
+        arrangementId: itemData.relationships.arrangement.data ? itemData.relationships.arrangement.data.id : null,
         description: itemData.attributes.description,
         details: itemData.attributes.html_details,
         id: itemData.id,
@@ -59,6 +58,7 @@ export const PCO = {
         length: itemData.attributes.length,
         notes: {},
         position: itemData.attributes.service_position,
+        songId: itemData.relationships.song.data ? itemData.relationships.song.data.id : null,
         title: itemData.attributes.title,
         type: itemData.attributes.item_type,
       };
@@ -80,6 +80,19 @@ export const PCO = {
       return null;
     });
     return itemNotes;
+  },
+
+  getItemArrangement: async (songId, arrangementId) => {
+    const url = `${PCO.baseUrl}/songs/${songId}/arrangements/${arrangementId}`;
+
+    const arrangementData = await myFetch(url);
+    
+    const arrangement = {
+      bpm: arrangementData.attributes.bpm,
+      name: arrangementData.attributes.name
+    };
+
+    return arrangement;
   },
 
   calculateTimes: items => {

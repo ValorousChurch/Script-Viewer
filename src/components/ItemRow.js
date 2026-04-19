@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import PropTypes, { array } from 'prop-types';
 
 import { PCO } from '../utilities/pco';
 
@@ -9,15 +9,22 @@ class ItemRow extends Component {
   static propTypes = {
     item: PropTypes.object.isRequired,
     plan: PropTypes.object.isRequired,
+    templateName: PropTypes.string
   };
-  state = { notes: {} };
+  state = { notes: {}, arrangement: {} };
 
   async componentWillMount() {
-    this.setState({ notes: await PCO.getItemNotes(this.props.plan, this.props.item) });
+    this.setState({
+      notes: await PCO.getItemNotes(this.props.plan, this.props.item),
+      arrangement: this.props.item.type === 'song' ? await PCO.getItemArrangement(this.props.item.songId, this.props.item.arrangementId) : {},
+    });
   }
 
   render() {
     let description = this.state.notes.Vocals || '';
+    if (this.props.templateName === 'audio' && this.props.item.type === 'song') {
+      description = `<em>[Key: ${this.props.item.key}, BPM: ${this.state.arrangement.bpm || ''}]</em><br>${description}`
+    }
     if (this.props.item.details !== null) description += `<hr /> ${this.props.item.details}`;
     return (
       <tr>
