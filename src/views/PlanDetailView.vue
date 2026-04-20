@@ -7,7 +7,7 @@
       :service-type="plan.serviceType"
       :plan-id="plan.planId"
     />
-    <div class="page">
+    <div :class="['page', 'planDetails', { isDraft }]">
       <header>
         <small>{{ versionText }}</small>
         <br />
@@ -59,7 +59,7 @@ const serviceType = computed(() => route.params.serviceType as string | undefine
 const planId = computed(() => route.params.planId as string | undefined);
 const templateParam = computed(() => route.params.type as string | undefined);
 
-const { plan, loading, error, template, templateName, rows, versionText, titleText } =
+const { plan, loading, error, template, templateName, rows, versionText, titleText, isDraft } =
   usePlanDetails(
     () => serviceType.value,
     () => planId.value,

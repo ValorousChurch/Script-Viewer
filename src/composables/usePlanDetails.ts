@@ -63,6 +63,7 @@ export function usePlanDetails(
 
     return `${plan.value.planTitle ? `${plan.value.planTitle} - ` : ""}${plan.value.planDates}`;
   });
+  const isDraft = computed(() => plan.value?.planVersion === "NONE");
 
   return {
     plan,
@@ -73,5 +74,6 @@ export function usePlanDetails(
     rows,
     versionText,
     titleText,
+    isDraft,
   };
 }

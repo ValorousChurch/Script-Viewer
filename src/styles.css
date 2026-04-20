@@ -140,6 +140,24 @@ body {
   width: 8.5in;
 }
 
+.planDetails {
+  overflow: hidden;
+  position: relative;
+}
+
+.planDetails > * {
+  position: relative;
+  z-index: 1;
+}
+
+.planDetails.isDraft::before {
+  content: none;
+}
+
+.draftWatermark {
+  display: none;
+}
+
 .typeSelector,
 .planSelector,
 .templateSelector {
@@ -151,6 +169,25 @@ body {
   .planSelector,
   .templateSelector {
     display: none;
+  }
+
+  .planDetails.isDraft::before {
+    align-items: center;
+    color: rgba(0, 0, 0, 0.15);
+    content: "DRAFT";
+    display: flex;
+    font-size: 2in;
+    font-weight: 700;
+    inset: 0;
+    justify-content: center;
+    letter-spacing: 0.08em;
+    pointer-events: none;
+    position: absolute;
+    text-transform: uppercase;
+    transform: rotate(-32deg);
+    user-select: none;
+    white-space: nowrap;
+    z-index: 10;
   }
 
   body,

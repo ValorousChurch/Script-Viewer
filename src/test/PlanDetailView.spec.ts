@@ -2,6 +2,8 @@ import { mount } from "@vue/test-utils";
 import type { PlanDetails } from "@/types/plans";
 import PlanDetailView from "@/views/PlanDetailView.vue";
 
+let draftMode = false;
+
 const mockPlan: PlanDetails = {
   serviceType: "41396",
   planId: "123",
@@ -52,6 +54,7 @@ vi.mock("@/composables/usePlanDetails", async () => {
       error: ref(null),
       template: computed(() => planTemplates.audio),
       templateName: computed(() => "audio"),
+      isDraft: computed(() => draftMode),
       rows: computed(() => [
         {
           id: "row-1",
@@ -71,6 +74,7 @@ vi.mock("@/composables/usePlanDetails", async () => {
 
 describe("PlanDetailView", () => {
   it("renders plan metadata, template links, and template columns", () => {
+    draftMode = false;
     const wrapper = mount(PlanDetailView);
 
     expect(wrapper.text()).toContain("PRODUCTION SCRIPT: Weekend - Sunday, April 20");
@@ -82,5 +86,12 @@ describe("PlanDetailView", () => {
       "Side Screens",
       "Audio",
     ]);
+  });
+
+  it("renders a draft watermark for unfinalized plans", () => {
+    draftMode = true;
+    const wrapper = mount(PlanDetailView);
+
+    expect(wrapper.find(".planDetails").classes()).toContain("isDraft");
   });
 });
