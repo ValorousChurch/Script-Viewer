@@ -2,7 +2,7 @@
   "name": "script-viewer",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://barefootchurch.github.io/Script-Viewer/",
+  "homepage": "https://valorouschurch.github.io/Script-Viewer/",
   "type": "module",
   "scripts": {
     "dev": "vite",
