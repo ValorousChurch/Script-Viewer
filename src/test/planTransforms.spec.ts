@@ -49,7 +49,7 @@ describe("planTransforms", () => {
       "audio",
     );
 
-    expect(html).toContain("[Key: C, BPM: 72]");
+    expect(html).toContain("[<em>Key: C, BPM: 72</em>]");
     expect(html).toContain("Lead vocal");
   });
 

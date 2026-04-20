@@ -52,7 +52,7 @@ export function buildDescriptionHtml(item: PlanItem, templateName: string): stri
   let description = "";
 
   if (templateName === "audio" && item.type === "song") {
-    description += `<em>[Key: ${item.key ?? ""}, BPM: ${item.arrangement?.bpm ?? ""}]</em><br />`;
+    description += `[<em>Key: ${item.key ?? ""}, BPM: ${item.arrangement?.bpm ?? ""}</em>] `;
   }
 
   description += item.notes.Vocals || "";
