@@ -12,6 +12,16 @@ export default [
   eslint.configs.recommended,
   ...vuePlugin.configs["flat/recommended"],
   {
+    files: ["src/**/*.{ts,vue}"],
+    languageOptions: {
+      globals: {
+        URL: "readonly",
+        btoa: "readonly",
+        fetch: "readonly",
+      },
+    },
+  },
+  {
     files: ["**/*.ts"],
     languageOptions: {
       parser: tsParser,
@@ -42,6 +52,25 @@ export default [
     rules: {
       ...tsPlugin.configs.recommended.rules,
       "vue/multi-word-component-names": "off",
+    },
+  },
+  {
+    files: ["src/test/**/*.ts"],
+    languageOptions: {
+      globals: {
+        describe: "readonly",
+        expect: "readonly",
+        it: "readonly",
+        vi: "readonly",
+      },
+    },
+  },
+  {
+    files: ["vite.config.ts"],
+    languageOptions: {
+      globals: {
+        URL: "readonly",
+      },
     },
   },
   eslintConfigPrettier,
