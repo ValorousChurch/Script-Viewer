@@ -38,7 +38,8 @@ td.header {
   text-align: left;
 }
 
-td.note {
+td.note,
+.elementCell {
   text-align: left;
 }
 
@@ -53,8 +54,8 @@ td.note:last-child {
 
 span.source {
   background: #999;
-  color: white;
   border: 1px solid black;
+  color: white;
   display: block;
   font-weight: normal;
   text-align: center;
@@ -80,13 +81,14 @@ span.source {
   margin-top: 10px;
   padding: 10px 0;
   text-align: center;
+  text-decoration: none;
   width: 49%;
 }
 
 .templateSelector a {
   font-size: 1.25em;
-  padding: 5px 0;
   margin-left: 10px;
+  padding: 5px 0;
 }
 
 .typeSelector a:hover,
@@ -95,7 +97,6 @@ span.source {
 .templateSelector a.active {
   background: #999;
   color: #fff;
-  text-decoration: none;
 }
 
 .typeSelector a:nth-child(odd),
@@ -103,21 +104,37 @@ span.source {
   margin-left: 2%;
 }
 
-.templateSelector a:first-child {
+.templateSelector a:first-of-type {
   margin-left: 5px;
+}
+
+.statusMessage {
+  font-size: 1.25em;
+  margin: 0;
+  padding-top: 0.2in;
+  text-align: center;
+}
+
+.errorState {
+  color: #a40000;
+}
+
+.alignLeft {
+  text-align: left;
 }
 
 /* Pretty paper look */
 body {
   background: rgb(204, 204, 204);
+  margin: 0;
+  min-width: 900px;
 }
 
 .page {
   background: white;
   box-shadow: 0 0 0.2in rgba(0, 0, 0, 0.5);
   display: block;
-  margin: 0 auto;
-  margin-bottom: 0.2in;
+  margin: 0 auto 0.2in;
   padding: 0.25in;
   padding-top: 0.15in;
   width: 8.5in;
@@ -130,7 +147,6 @@ body {
 }
 
 @media print {
-
   .typeSelector,
   .planSelector,
   .templateSelector {
@@ -140,9 +156,10 @@ body {
   body,
   .page {
     background: white;
-    box-shadow: 0;
+    box-shadow: none;
     height: 100%;
     margin: 0;
+    min-width: auto;
     padding: 0;
     width: 100%;
   }
