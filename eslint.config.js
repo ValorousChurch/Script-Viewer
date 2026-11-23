@@ -16,7 +16,6 @@ export default [
     languageOptions: {
       globals: {
         URL: "readonly",
-        btoa: "readonly",
         fetch: "readonly",
       },
     },

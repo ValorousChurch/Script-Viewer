@@ -9,10 +9,7 @@ Vue 3 + TypeScript rewrite of the Script Viewer GitHub Pages app. The public rou
 ## Development
 
 1. Copy `.env.example` to `.env`.
-2. Set:
-   - `VITE_PCO_APP_ID`
-   - `VITE_PCO_SECRET`
-   - `VITE_CORS_PROXY_URL`
+2. Set `VITE_CORS_PROXY_URL` to the Cloudflare Worker's `/proxy/` endpoint.
 3. Install dependencies with `npm install`.
 4. Start the app with `npm run dev`.
 
@@ -26,10 +23,10 @@ Vue 3 + TypeScript rewrite of the Script Viewer GitHub Pages app. The public rou
 
 ## Architecture
 
-- `src/api/pcoClient.ts` contains low-level fetch, proxy, and auth behavior.
+- `src/api/pcoClient.ts` sends Planning Center requests through the Cloudflare Worker.
 - `src/services/planningCenterService.ts` normalizes Planning Center data for the UI.
 - `src/services/planTransforms.ts` handles clock calculation and template-driven row shaping.
 - `src/composables/` contains the route-scoped loaders for plan lists and plan details.
 - `src/config/planTemplates.ts` owns the view templates and service type options.
 
-The app still uses browser-side Planning Center credentials for v1, but that behavior is isolated behind the typed API layer so proxy/auth can move server-side later without rewriting the UI.
+`cors-proxy.js` authenticates Planning Center requests using the Worker's `PCO_APP_ID` and `PCO_SECRET` secret bindings.

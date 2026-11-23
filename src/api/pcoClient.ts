@@ -13,28 +13,22 @@ export class PcoClient {
     return `${corsProxyUrl}${separator}apiurl=${encodeURIComponent(url)}`;
   }
 
-  private createAuthHeader(): string {
-    const { appId, secret } = getPcoRuntimeConfig();
-    return `Basic ${btoa(`${appId}:${secret}`)}`;
-  }
-
   async get<T>(path: string): Promise<T> {
     const url = path.startsWith("http") ? path : `${this.baseUrl}${path}`;
-    const response = await fetch(this.buildProxyUrl(url), {
-      method: "GET",
-      headers: {
-        Authorization: this.createAuthHeader(),
-      },
-    });
+    const response = await fetch(this.buildProxyUrl(url));
 
     if (!response.ok) {
-      throw new Error(`Planning Center request failed with ${response.status}.`);
+      throw new Error(
+        `Planning Center request failed with ${response.status}.`,
+      );
     }
 
     const payload = (await response.json()) as ProxyResponse<T>;
 
     if (!("data" in payload)) {
-      throw new Error("Planning Center proxy response did not include a data field.");
+      throw new Error(
+        "Planning Center proxy response did not include a data field.",
+      );
     }
 
     return payload.data;
